@@ -20,8 +20,127 @@
             font-family: 'Assistant', sans-serif;
             background-color: #f4f7f6;
             text-align: right;
+            margin: 0;
+            padding: 0;
         }
 
+        /* Navbar עיצוב שקוף ויוקרתי */
+        .navbar-custom {
+            background-color: transparent;
+            border: none;
+            position: absolute;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            font-size: 1.5rem;
+        }
+
+        .navbar-toggler {
+            display: block !important;
+            border: none;
+            outline: none !important;
+            padding: 0;
+            margin-left: 0;
+            margin-right: auto;
+            z-index: 1005;
+        }
+
+        /* --- הנפשה מדורגת חלקה --- */
+        .navbar-collapse {
+            position: absolute;
+            left: 70px; 
+            top: 25px;
+            width: auto;
+            display: block !important;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s;
+        }
+
+        .navbar-collapse.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .collapsing {
+            display: block !important;
+            height: auto !important;
+            transition: opacity 0.4s ease !important;
+            opacity: 0;
+        }
+
+        .nav-item {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.4s ease-in-out;
+        }
+
+        .navbar-collapse.show .nav-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .navbar-collapse.show .nav-item:nth-child(1) { transition-delay: 0.1s; }
+        .navbar-collapse.show .nav-item:nth-child(2) { transition-delay: 0.2s; }
+        .navbar-collapse.show .nav-item:nth-child(3) { transition-delay: 0.3s; }
+        .navbar-collapse.show .nav-item:nth-child(4) { transition-delay: 0.4s; }
+        .navbar-collapse.show .nav-item:nth-child(5) { transition-delay: 0.5s; }
+
+        .navbar-collapse:not(.show) .nav-item {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .navbar-collapse:not(.show) .nav-item:nth-child(5) { transition-delay: 0.0s; }
+        .navbar-collapse:not(.show) .nav-item:nth-child(4) { transition-delay: 0.1s; }
+        .navbar-collapse:not(.show) .nav-item:nth-child(3) { transition-delay: 0.2s; }
+        .navbar-collapse:not(.show) .nav-item:nth-child(2) { transition-delay: 0.3s; }
+        .navbar-collapse:not(.show) .nav-item:nth-child(1) { transition-delay: 0.4s; }
+
+        .navbar-nav {
+            flex-direction: row !important;
+            gap: 25px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: white !important;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            font-size: 1.1rem;
+            white-space: nowrap;
+            padding: 0 !important;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary) !important;
+        }
+
+        .navbar-expand-lg .navbar-collapse:not(.show) {
+            display: block !important;
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+            width: 35px;
+            height: 35px;
+        }
+
+        .navbar-toggler:not(.collapsed) .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M6 6l18 18M6 24L24 6'/%3E%3C/svg%3E") !important;
+        }
+
+        /* Header */
         .header {
             background: linear-gradient(rgba(0, 87, 184, 0.85), rgba(0, 87, 184, 0.85)), 
                         url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1500&q=80');
@@ -43,6 +162,7 @@
             object-fit: cover;
         }
 
+        /* Sections */
         .section { padding: 80px 0; }
         
         .title {
@@ -54,7 +174,9 @@
             padding-bottom: 10px;
         }
 
-        /* עיצוב כרטיסיות משודרג - כחול הייטק */
+        .about-text { line-height: 1.8; font-size: 1.1rem; }
+
+        /* QA Cards */
         .card-qa {
             border: none;
             border-radius: 20px;
@@ -69,19 +191,9 @@
             transition: transform 0.3s ease;
         }
 
-        .card-qa:hover {
-            transform: translateY(-10px);
-        }
-
-        .card-qa h5 {
-            color: var(--secondary);
-            font-weight: bold;
-            margin-top: 15px;
-        }
-
-        .card-qa p {
-            color: #e0e0e0;
-        }
+        .card-qa:hover { transform: translateY(-10px); }
+        .card-qa h5 { color: var(--secondary); font-weight: bold; margin-top: 15px; }
+        .card-qa p { color: #e0e0e0; }
 
         .portfolio-img {
             width: 100%;
@@ -90,12 +202,6 @@
             background-color: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
             margin-bottom: 5px;
-        }
-
-        /* קולאז' הערכים */
-        .collage-img {
-            object-fit: cover;
-            height: 250px;
         }
 
         .tag {
@@ -108,6 +214,7 @@
             color: var(--primary);
         }
 
+        /* --- עיצוב חלק תחתון (Footer) מעודכן לפי התמונה --- */
         .footer {
             background: #1e272e;
             color: white;
@@ -115,31 +222,100 @@
             text-align: center;
         }
 
+        .footer h2 {
+            font-weight: bold;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .footer p.lead-footer {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
         .btn-custom {
             background-color: var(--secondary);
             color: var(--primary);
             font-weight: bold;
             border-radius: 50px;
-            padding: 12px 35px;
+            padding: 15px 40px;
             transition: 0.3s;
+            border: none;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none !important;
         }
 
+        .btn-custom:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .copyright-text {
+            margin-top: 50px;
+            opacity: 0.7;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* Utility */
         .row { flex-direction: row-reverse; }
     </style>
 </head>
 <body id="home">
 
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid d-flex align-items-center">
+            
+            <a class="navbar-brand" href="#home">אושרי כהן</a>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#home">בית</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about-me">קצת עלי</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#qa-value">הערך המוסף</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">עשייה</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">צור קשר</a></li>
+                </ul>
+            </div>
+
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </div>
+    </nav>
+
     <header class="header">
         <div class="container">
             <img src="תמונה אושרי.jpg" alt="אושרי" class="profile-img">
-            <h1 class="display-4 font-weight-bold">אושרי</h1>
+            <h1 class="display-4 font-weight-bold">אושרי כהן</h1>
             <p class="lead">Junior QA Engineer | Operations & Logistics Specialist</p>
             <p>סטודנט במכללה לאוטומציה אצל גל מטלון</p>
             <a href="#portfolio" class="btn btn-custom mt-3">צפו בעשייה שלי</a>
         </div>
     </header>
 
-    <section class="section container" id="about">
+    <section class="section container" id="about-me">
+        <div class="row">
+            <div class="col-12 text-right">
+                <h2 class="title">קצת עלי</h2>
+                <div class="about-text">
+                    <p>שלום, אני אושרי כהן, בן 36, נשוי ואבא ל-2 ילדים מתוקים ב"ה.</p>
+                    <p>אני מתגורר באבן שמואל ועובד בתחום הלוגיסטיקה במטבח – אחראי על הזמנת וסידור סחורה וניהול המלאי. בנוסף, אני מעביר חוג לגו הנדסי לילדים, שם אנחנו לומדים יחד חשיבה אלגוריתמית ופתרון בעיות.</p>
+                    <p>אני אוהד מושבע של מכבי ת"א 💙💛, אוהב לשחק כדורגל ומקפיד על לימוד דף יומי בגמרא. חשוב לי מאוד הסדר והארגון, ואני פדנט באופי שלי – תכונה שמובילה אותי לדיוק מקסימלי בעבודה.</p>
+                    <p>החלום שלי הוא לעסוק ב-QA, תחום שמתחבר לאהבה שלי לסדר ודיוק, ואני נרגש מהפרק החדש בחיים שלי.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section container" id="qa-value">
         <div class="row align-items-center">
             <div class="col-md-7 text-right">
                 <h2 class="title">הערך המוסף שלי ל-QA</h2>
@@ -154,7 +330,7 @@
                 </div>
             </div>
            <div class="col-md-5">
-                <div class="card-qa text-center" style="background: var(--primary); color: white;">
+                <div class="card-qa text-center">
                     <i class="fas fa-check-double fa-3x mb-3" style="color: var(--secondary);"></i>
                     <h4>דיוק ללא פשרות</h4>
                     <p>היכולת שלי להצליב נתונים ולוודא שהתוצר תואם את הדרישה היא המנוע שלי בעולם הבדיקות.</p>
@@ -166,7 +342,6 @@
     <section class="section container text-center" id="portfolio">
         <h2 class="title">גלריה ועשייה</h2>
         <div class="row mt-4">
-            
             <div class="col-md-4 mb-4">
                 <div class="card-qa">
                     <img src="לוגיסטיקה.jpg" alt="תפעול ולוגיסטיקה" class="portfolio-img">
@@ -174,7 +349,6 @@
                     <p class="small">ניהול מלאי, ארגון וביצוע בקרת איכות יומיומית.</p>
                 </div>
             </div>
-
             <div class="col-md-4 mb-4">
                 <div class="card-qa">
                     <img src="לגו הנדסי.jpg" alt="לגו הנדסי" class="portfolio-img">
@@ -182,30 +356,41 @@
                     <p class="small">לימוד חשיבה אלגוריתמית ופתרון תקלות (Debugging).</p>
                 </div>
             </div>
-
             <div class="col-md-4 mb-4">
                 <div class="card-qa">
-                    <img src="תחביבים.jpg" alt="ערכים והתמדה" class="portfolio-img collage-img">
+                    <img src="תחביבים.jpg" alt="ערכים והתמדה" class="portfolio-img" style="object-fit: cover;">
                     <h5>ערכים והתמדה</h5>
                     <p class="small">שילוב של רוח צוות מהכדורגל ולימוד דף יומי מעמיק.</p>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <footer class="footer" id="contact">
-        <div class="container text-center">
-            <h2 class="mb-4">בואו נדבר</h2>
-            <p>אני מחפש את האתגר הבא שלי בעולם ה-QA</p>
-           <div class="mt-4">
-                <a href="mailto:oshri25cohen@gmail.com" class="btn btn-custom">
-                    <i class="fas fa-envelope mr-2"></i> שלחו לי מייל ל-oshri25cohen@gmail.com
-                </a>
-            </div>
-            <p class="mt-5" style="opacity: 0.5;">© 2026 אושרי | נבנה עם Assistant, Bootstrap וצבעי מכבי 💙💛</p>
-        </div>
-    </footer>
+   <footer class="footer" id="contact">
+    <div class="container">
+        <h2 style="font-weight: normal;">בואו נדבר</h2> <p class="lead-footer">אני מחפש את האתגר הבא שלי בעולם ה-QA</p>
+        
+        <a href="mailto:oshri25cohen@gmail.com" class="btn btn-custom">
+            שלחו לי מייל ל- oshri25cohen@gmail.com <i class="fas fa-envelope"></i>
+        </a>
 
+        <div class="copyright-text">
+            <span style="color: #ffd500;">💛</span><span style="color: #0057b8;">💙</span>
+            © 2026 אושרי | נבנה עם Assistant, Bootstrap וצבעי מכבי
+        </div>
+    </div>
+</footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $('.nav-link').on('click', function() {
+            var $collapse = $('.navbar-collapse');
+            if ($collapse.hasClass('show')) {
+                $collapse.collapse('hide');
+            }
+        });
+    </script>
 </body>
 </html>
