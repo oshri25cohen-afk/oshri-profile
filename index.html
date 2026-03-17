@@ -16,7 +16,7 @@
             --dark-blue: #003d82;
         }
 
-        /* מניעת גלישה לצדדים - פותר בעיה ב' */
+        /* מניעת גלישה לצדדים */
         html, body {
             max-width: 100%;
             overflow-x: hidden;
@@ -27,14 +27,251 @@
             text-align: right;
         }
 
-        /* Navbar עיצוב שקוף ויוקרתי */
+        /* Navbar בסיסי */
         .navbar-custom {
             background-color: transparent;
             border: none;
             position: absolute;
             width: 100%;
             z-index: 1000;
-            padding: 20px 0;
+            padding: 15px 0;
+            transition: background 0.3s;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: white !important;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover { color: var(--secondary) !important; }
+
+        /* כפתור המבורגר */
+        .navbar-toggler {
+            border: none;
+            outline: none !important;
+            padding: 5px;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(rgba(0, 87, 184, 0.85), rgba(0, 87, 184, 0.85)), 
+                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            min-height: 100vh;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid var(--secondary);
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        /* Sections */
+        .section { padding: 80px 0; }
+        .title {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 40px;
+            border-bottom: 3px solid var(--secondary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .card-qa {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            padding: 25px;
+            margin-bottom: 20px;
+            background: linear-gradient(145deg, var(--dark-blue), var(--primary));
+            color: white;
+            height: 100%;
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .footer { background: #1e272e; color: white; padding: 60px 0; text-align: center; }
+        .btn-custom {
+            background-color: var(--secondary);
+            color: var(--primary);
+            font-weight: bold;
+            border-radius: 50px;
+            padding: 12px 35px;
+            border: none;
+            text-decoration: none !important;
+        }
+
+        /* --- תיקוני רספונסיביות - מובייל --- */
+        @media (max-width: 991px) {
+            .navbar-custom {
+                position: relative; 
+                background-color: var(--primary) !important;
+            }
+            .navbar-collapse {
+                background-color: var(--dark-blue);
+                padding: 15px;
+                border-radius: 10px;
+                margin-top: 10px;
+            }
+            .navbar-nav {
+                flex-direction: column !important;
+                text-align: center;
+                gap: 10px;
+            }
+            .header { min-height: auto; padding: 60px 20px; }
+            .profile-img { width: 150px; height: 150px; }
+            .row { flex-direction: column !important; }
+        }
+
+        @media (max-height: 500px) and (orientation: landscape) {
+            .profile-img { width: 100px; height: 100px; }
+            .display-4 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body id="home">
+
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="#home">אושרי כהן</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">בית</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about-me">קצת עלי</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#qa-value">הערך המוסף</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">עשייה</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">צור קשר</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="header">
+        <div class="container">
+            <img src="תמונה אושרי.jpg" alt="אושרי" class="profile-img">
+            <h1 class="display-4 font-weight-bold">אושרי כהן</h1>
+            <p class="lead">Junior QA Engineer | Operations & Logistics Specialist</p>
+            <p>סטודנט במכללה לאוטומציה אצל גל מטלון</p>
+            <a href="#portfolio" class="btn btn-custom mt-3">צפו בעשייה שלי</a>
+        </div>
+    </header>
+
+    <section class="section container" id="about-me">
+        <div class="row text-right">
+            <div class="col-12">
+                <h2 class="title">קצת עלי</h2>
+                <div class="about-text">
+                    <p>שלום, אני אושרי כהן, בן 36, נשוי ואבא ל-2 ילדים מתוקים ב"ה.</p>
+                    <p>אני מתגורר באבן שמואל ועובד בתחום הלוגיסטיקה. בנוסף, אני מעביר חוג לגו הנדסי לילדים.</p>
+                    <p>אני אוהד מושבע של מכבי ת"א 💙💛, אוהב לשחק כדורגל ומקפיד על לימוד דף יומי. חשוב לי מאוד הסדר והארגון - תכונה שמובילה אותי לדיוק מקסימלי ב-QA.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section container" id="qa-value">
+        <div class="row align-items-center text-right">
+            <div class="col-md-7">
+                <h2 class="title">הערך המוסף שלי ל-QA</h2>
+                <p>אני מאמין ש-QA זה להבטיח איכות מקצה לקצה. בתפקידי בתפעול, אני מבצע "בדיקות קבלה" יומיומיות, וב-QA אני מביא את אותה רמת פדנטיות ודיוק.</p>
+                <div class="mt-4">
+                    <span class="tag" style="background:#e9ecef; padding:5px 15px; border-radius:20px; display:inline-block; margin:5px; color:var(--primary); font-weight:600;">Jira</span>
+                    <span class="tag" style="background:#e9ecef; padding:5px 15px; border-radius:20px; display:inline-block; margin:5px; color:var(--primary); font-weight:600;">Manual Testing</span>
+                    <span class="tag" style="background:#e9ecef; padding:5px 15px; border-radius:20px; display:inline-block; margin:5px; color:var(--primary); font-weight:600;">SQL</span>
+                    <span class="tag" style="background:#e9ecef; padding:5px 15px; border-radius:20px; display:inline-block; margin:5px; color:var(--primary); font-weight:600;">API Testing</span>
+                </div>
+            </div>
+            <div class="col-md-5 mt-4 mt-md-0">
+                <div class="card-qa text-center">
+                    <i class="fas fa-check-double fa-3x mb-3" style="color: var(--secondary);"></i>
+                    <h4>דיוק ללא פשרות</h4>
+                    <p>היכולת שלי להצליב נתונים ולוודא שהתוצר תואם את הדרישה היא המנוע שלי.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section container text-center" id="portfolio">
+        <h2 class="title">גלריה ועשייה</h2>
+        <div class="row mt-4">
+            <div class="col-md-4 mb-4">
+                <div class="card-qa">
+                    <img src="לוגיסטיקה.jpg" alt="לוגיסטיקה" class="portfolio-img">
+                    <h5>תפעול ולוגיסטיקה</h5>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card-qa">
+                    <img src="לגו הנדסי.jpg" alt="לגו" class="portfolio-img">
+                    <h5>הדרכת לגו הנדסי</h5>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card-qa">
+                    <img src="תחביבים.jpg" alt="תחביבים" class="portfolio-img" style="object-fit:cover;">
+                    <h5>ערכים והתמדה</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="contact">
+        <div class="container">
+            <h2>בואו נדבר</h2>
+            <p>אני מחפש את האתגר הבא שלי בעולם ה-QA</p>
+            <a href="mailto:oshri25cohen@gmail.com" class="btn btn-custom">שלחו מייל <i class="fas fa-envelope"></i></a>
+            <div style="margin-top:30px; opacity:0.7;">
+                © 2026 אושרי | צהוב עולה 💙💛
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // סגירת התפריט אוטומטית אחרי לחיצה על לינק במובייל
+        $('.nav-link').on('click', function(){
+            $('.navbar-collapse').collapse('hide');
+        });
+    </script>
+</body>
+</html>            padding: 20px 0;
         }
 
         .navbar-brand {
