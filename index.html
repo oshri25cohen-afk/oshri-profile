@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700&display=swap" rel="stylesheet">
     
-    <style>
+<style>
         :root {
             --primary: #0057b8; 
             --secondary: #ffd500;
@@ -148,12 +148,13 @@
             background: linear-gradient(rgba(0, 87, 184, 0.85), rgba(0, 87, 184, 0.85)), 
                         url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1500&q=80');
             background-size: cover;
-            height: 100vh;
+            min-height: 100vh; /* שינוי מ-height ל-min-height */
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            padding: 100px 0; /* הוספת ריווח פנימי למניעת הסתרה ע"י התפריט */
         }
 
         .profile-img {
@@ -217,7 +218,6 @@
             color: var(--primary);
         }
 
-        /* --- עיצוב חלק תחתון (Footer) מעודכן לפי התמונה --- */
         .footer {
             background: #1e272e;
             color: white;
@@ -269,7 +269,19 @@
         /* Utility */
         .row { flex-direction: row-reverse; }
 
-        /* מניעת רווחים מיותרים בגלל Grid של Bootstrap במובייל */
+        /* תיקון ספציפי למצב Landscape (סיבוב הפלאפון) */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .header {
+                padding-top: 120px; /* דוחף את התוכן מתחת לתפריט */
+                height: auto;
+                min-height: 550px; /* מבטיח מספיק מקום לתמונה ולמלל */
+            }
+            .profile-img {
+                width: 120px; /* מקטין מעט את התמונה כדי שתתאים לגובה המסך */
+                height: 120px;
+            }
+        }
+
         @media (max-width: 768px) {
             .row { margin-left: 0; margin-right: 0; }
             .container { padding-left: 10px; padding-right: 10px; }
