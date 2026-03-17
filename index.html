@@ -16,12 +16,15 @@
             --dark-blue: #003d82;
         }
 
-        body {
+        /* תיקון בריחת תוכן ימינה ורווח לבן במובייל */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
             font-family: 'Assistant', sans-serif;
             background-color: #f4f7f6;
             text-align: right;
-            margin: 0;
-            padding: 0;
         }
 
         /* Navbar עיצוב שקוף ויוקרתי */
@@ -265,6 +268,12 @@
 
         /* Utility */
         .row { flex-direction: row-reverse; }
+
+        /* מניעת רווחים מיותרים בגלל Grid של Bootstrap במובייל */
+        @media (max-width: 768px) {
+            .row { margin-left: 0; margin-right: 0; }
+            .container { padding-left: 10px; padding-right: 10px; }
+        }
     </style>
 </head>
 <body id="home">
