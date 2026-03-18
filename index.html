@@ -16,7 +16,7 @@
             --dark-blue: #003d82;
         }
 
-        /* איפוס ומניעת בריחה ימינה */
+        /* איפוס כללי */
         html, body {
             max-width: 100%;
             overflow-x: hidden;
@@ -27,14 +27,14 @@
             text-align: right;
         }
 
-        /* --- Navbar בסיסי --- */
+        /* Navbar בסיסי */
         .navbar-custom {
-            background-color: transparent;
             border: none;
             position: absolute;
             width: 100%;
             z-index: 1000;
             padding: 20px 0;
+            background-color: transparent;
         }
 
         .navbar-brand {
@@ -44,11 +44,12 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
 
-        /* עיצוב כפתור ההמבורגר */
+        /* עיצוב כפתור ההמבורגר - שיהיה גלוי תמיד */
         .navbar-toggler {
             border: none;
             outline: none !important;
-            z-index: 1005;
+            display: block !important; /* מבטיח שההמבורגר יופיע */
+            z-index: 1010;
         }
 
         .navbar-toggler-icon {
@@ -57,10 +58,10 @@
             height: 35px;
         }
 
-        /* --- לוגיקה למחשב (מעל 992px) --- */
+        /* --- לוגיקה למחשב (מסך רחב) --- */
         @media (min-width: 992px) {
-            .navbar-expand-lg .navbar-collapse {
-                display: block !important;
+            .navbar-collapse {
+                display: block !important; /* דרוש עבור ה-Logic של Bootstrap */
                 position: absolute;
                 left: 70px;
                 top: 25px;
@@ -75,7 +76,9 @@
                 visibility: visible;
             }
 
-            /* הנפשות מדורגות לחברי התפריט במחשב */
+            .navbar-nav { flex-direction: row !important; gap: 25px; }
+
+            /* הנפשה מדורגת למחשב */
             .nav-item {
                 opacity: 0;
                 transform: translateY(-20px);
@@ -92,14 +95,12 @@
             .navbar-collapse.show .nav-item:nth-child(3) { transition-delay: 0.3s; }
             .navbar-collapse.show .nav-item:nth-child(4) { transition-delay: 0.4s; }
             .navbar-collapse.show .nav-item:nth-child(5) { transition-delay: 0.5s; }
-
-            .navbar-nav { flex-direction: row !important; gap: 25px; }
         }
 
-        /* --- לוגיקה למובייל (מתחת ל-991px) --- */
+        /* --- לוגיקה למובייל (מסך צר) --- */
         @media (max-width: 991px) {
             .navbar-custom {
-                background-color: rgba(0, 61, 130, 0.9);
+                background-color: rgba(0, 61, 130, 0.95);
                 position: fixed;
                 padding: 10px 0;
             }
@@ -111,24 +112,22 @@
                 width: 100%;
                 padding: 20px;
                 text-align: center;
-                transition: 0.3s ease;
+                border-bottom: 2px solid var(--secondary);
             }
             .navbar-nav { flex-direction: column !important; gap: 15px; }
-            
-            /* במובייל לא צריך הנפשה מדורגת כדי שיהיה מהיר ונוח */
-            .nav-item { opacity: 1; transform: none; }
+            .nav-item { opacity: 1; transform: none; } /* במובייל מופיע מיד */
         }
 
+        /* עיצוב הקישורים */
         .nav-link {
             color: white !important;
             font-weight: bold;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
             transition: 0.3s;
         }
-
         .nav-link:hover { color: var(--secondary) !important; }
 
-        /* --- Header ותמונת פרופיל --- */
+        /* Header ופרופיל */
         .header {
             background: linear-gradient(rgba(0, 87, 184, 0.85), rgba(0, 87, 184, 0.85)), 
                         url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1500&q=80');
@@ -151,7 +150,7 @@
             object-fit: cover;
         }
 
-        /* --- כותרות וכרטיסיות (עיצוב צהוב/כחול) --- */
+        /* כרטיסיות ועיצוב צהוב */
         .section { padding: 80px 0; }
         .title {
             color: var(--primary);
@@ -173,14 +172,9 @@
             display: flex;
             flex-direction: column;
             color: white;
-            transition: transform 0.3s ease;
         }
 
-        .card-qa h5, .card-qa h4 { 
-            color: var(--secondary) !important; 
-            font-weight: bold; 
-            margin-top: 15px; 
-        }
+        .card-qa h5, .card-qa h4 { color: var(--secondary) !important; font-weight: bold; }
 
         .tag {
             background: #e9ecef;
@@ -196,31 +190,15 @@
             width: 100%;
             height: 250px;
             object-fit: contain;
-            background-color: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
             margin-bottom: 5px;
         }
 
-        .footer {
-            background: #1e272e;
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-        }
-
-        .btn-custom {
-            background-color: var(--secondary);
-            color: var(--primary);
-            font-weight: bold;
-            border-radius: 50px;
-            padding: 15px 40px;
-            text-decoration: none !important;
-        }
+        .footer { background: #1e272e; color: white; padding: 60px 0; text-align: center; }
 
         .row { flex-direction: row-reverse; }
 
         @media (max-width: 768px) {
-            .row { margin: 0; }
             .profile-img { width: 150px; height: 150px; }
         }
     </style>
