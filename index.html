@@ -16,7 +16,7 @@
             --dark-blue: #003d82;
         }
 
-        /* איפוס כללי */
+        /* איפוס ומניעת בריחה ימינה */
         html, body {
             max-width: 100%;
             overflow-x: hidden;
@@ -27,7 +27,7 @@
             text-align: right;
         }
 
-        /* Navbar בסיסי */
+        /* --- Navbar בסיסי --- */
         .navbar-custom {
             border: none;
             position: absolute;
@@ -44,11 +44,11 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
 
-        /* עיצוב כפתור ההמבורגר - שיהיה גלוי תמיד */
+        /* עיצוב כפתור ההמבורגר */
         .navbar-toggler {
             border: none;
             outline: none !important;
-            display: block !important; /* מבטיח שההמבורגר יופיע */
+            display: block !important;
             z-index: 1010;
         }
 
@@ -58,10 +58,10 @@
             height: 35px;
         }
 
-        /* --- לוגיקה למחשב (מסך רחב) --- */
+        /* --- לוגיקה למחשב (992px ומעלה) --- */
         @media (min-width: 992px) {
             .navbar-collapse {
-                display: block !important; /* דרוש עבור ה-Logic של Bootstrap */
+                display: block !important;
                 position: absolute;
                 left: 70px;
                 top: 25px;
@@ -97,7 +97,7 @@
             .navbar-collapse.show .nav-item:nth-child(5) { transition-delay: 0.5s; }
         }
 
-        /* --- לוגיקה למובייל (מסך צר) --- */
+        /* --- לוגיקה למובייל (991px ומטה) --- */
         @media (max-width: 991px) {
             .navbar-custom {
                 background-color: rgba(0, 61, 130, 0.95);
@@ -115,10 +115,9 @@
                 border-bottom: 2px solid var(--secondary);
             }
             .navbar-nav { flex-direction: column !important; gap: 15px; }
-            .nav-item { opacity: 1; transform: none; } /* במובייל מופיע מיד */
+            .nav-item { opacity: 1; transform: none; }
         }
 
-        /* עיצוב הקישורים */
         .nav-link {
             color: white !important;
             font-weight: bold;
@@ -150,7 +149,7 @@
             object-fit: cover;
         }
 
-        /* כרטיסיות ועיצוב צהוב */
+        /* כותרות וכרטיסיות */
         .section { padding: 80px 0; }
         .title {
             color: var(--primary);
@@ -174,8 +173,10 @@
             color: white;
         }
 
-        .card-qa h5, .card-qa h4 { color: var(--secondary) !important; font-weight: bold; }
+        /* החזרת הכותרות בצהוב */
+        .card-qa h5, .card-qa h4 { color: var(--secondary) !important; font-weight: bold; margin-top: 15px; }
 
+        /* החזרת הכיתוב הכחול בתוך הריבועים (Tags) */
         .tag {
             background: #e9ecef;
             padding: 5px 15px;
@@ -194,12 +195,53 @@
             margin-bottom: 5px;
         }
 
-        .footer { background: #1e272e; color: white; padding: 60px 0; text-align: center; }
+        /* --- החזרת הריבועים הצהובים (כפתורים) --- */
+        .btn-custom {
+            background-color: var(--secondary);
+            color: var(--primary) !important;
+            font-weight: bold;
+            border-radius: 50px;
+            padding: 15px 40px;
+            transition: 0.3s;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none !important;
+            font-size: 1.1rem;
+        }
+
+        .btn-custom:hover {
+            background-color: white;
+            color: var(--primary) !important;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e272e;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .footer h2 { font-weight: bold; font-size: 2.5rem; margin-bottom: 15px; }
+        .footer p.lead-footer { font-size: 1.2rem; margin-bottom: 30px; }
+
+        .copyright-text {
+            margin-top: 50px;
+            opacity: 0.7;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
 
         .row { flex-direction: row-reverse; }
 
         @media (max-width: 768px) {
             .profile-img { width: 150px; height: 150px; }
+            .header h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
